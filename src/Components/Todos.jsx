@@ -1,4 +1,6 @@
 import React from 'react';
+import Todo from './Todo';
+
 
 class Todos extends React.Component{
 	constructor(props){
@@ -23,7 +25,7 @@ class Todos extends React.Component{
 			<ul>
 				{this.state.todos.map(todo => (
 					<li key={todo.id} className='list-group-item'>
-						{todo.title}
+						<Todo todo={todo}/>
 					</li>
 				))}	
 			</ul>
