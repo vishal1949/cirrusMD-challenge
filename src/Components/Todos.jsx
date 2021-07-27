@@ -39,9 +39,9 @@ class Todos extends React.Component{
 
 	render(){
 		return (
-			<ul className='list-group'>
+			<ul className="todos-container">
 				{this.state.todos.map(todo => (
-					<li key={todo.id} className='list-group-item'>
+					<li key={todo.id} >
 						<Todo todo={todo} onCheckboxClick={this.handleCheckboxClick}/>
 					</li>
 				))}	
