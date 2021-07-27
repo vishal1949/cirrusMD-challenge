@@ -5,6 +5,7 @@ const imageUrl = "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104
 
 const Todo = ({todo, onCheckboxClick}) => {
 	
+
 	const handleClick = () => {
 		window.alert("Every 'Action' has an equal and opposite Reaction. REACTION!!!")
 	}
@@ -14,12 +15,12 @@ const Todo = ({todo, onCheckboxClick}) => {
 	}
 
 	return(
-		<div className="todo flex" onClick={handleDivClick}>
-			<div className="left-content flex">
+		<div className="todo flex">
+			<div className="left-content flex" onClick={handleDivClick}>
 				<img className="user-profile-image" alt="" src={imageUrl}></img>
 				<div className="todo-data">
-					<div classname="todo-id">{todo.id}</div>
-					<div classname="todo-title">{todo.title}</div>
+					<div classname="todo-id">Id: {todo.id}</div>
+					<div classname="todo-title">Description: {todo.title}</div>
 				</div>
 				
 			</div>
@@ -32,7 +33,7 @@ const Todo = ({todo, onCheckboxClick}) => {
 					onClick={(e) => onCheckboxClick(e)}>
 				</input> 
 				<button className="btn btn-primary btn-sm" onClick={handleClick}>Action</button>
-				<div className="black-bar "></div>
+				<div className="black-bar" onClick={handleDivClick} ></div>
 			</div>
 		</div>
 	)
