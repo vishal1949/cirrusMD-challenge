@@ -2,6 +2,7 @@
   display: flexbox;
   margin: auto;
   width: 60%;
-  border: 1px solid red;
   min-height: 80vh;
+  max-height: 800px;
+  margin-top: 10px;
 }
