@@ -12,9 +12,15 @@ class Todos extends React.Component{
 		}
 	}
 
-	componentDidMount = (prevState, prevProps) => {
+	componentDidMount = (prevProps) => {
 		if(prevProps !== this.props){
-			this.setState({todos: this.props.todos, isLoaded: true})
+			this.setState({todos: this.props.todos})
+		}
+	}
+	
+	componentDidUpdate(prevProps){
+		if(prevProps !== this.props){
+			this.setState({todos: this.props.todos})
 		}
 	}
 
@@ -32,9 +38,8 @@ class Todos extends React.Component{
 	}
 
 	render(){
-		console.log(this.state.todos[0]);
 		return (
-			<ul>
+			<ul className='list-group'>
 				{this.state.todos.map(todo => (
 					<li key={todo.id} className='list-group-item'>
 						<Todo todo={todo} onCheckboxClick={this.handleCheckboxClick}/>

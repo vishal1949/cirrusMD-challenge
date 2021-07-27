@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Pages from './Components/Pages';
 import Todos from './Components/Todos';
 
 const URL = "https://jsonplaceholder.typicode.com/todos";
@@ -12,7 +13,6 @@ function App() {
   const [numberOfTodosPerPage, setNumberOfTodosPerPage] = useState(20);
 
   useEffect( () => {
-    console.log("here")
     fetchTodos();
   }, [])
 
@@ -26,9 +26,21 @@ function App() {
     }
   }
 
+  const indexOfLastTodo = pageNumber * numberOfTodosPerPage;
+  const indexOfFirstTodo = indexOfLastTodo - numberOfTodosPerPage;
+  const visibleTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
+
+  const paginate = function(pageNumber){
+    setPageNumber(pageNumber);
+  }
+
   return (
     <div className="App">
-      {isLoaded ? <Todos todos={todos} isLoaded={isLoaded}/> : <div>Loading</div> }
+      {isLoaded ?  
+        <React.Fragment>
+          <Todos todos={visibleTodos} isLoaded={isLoaded}/>
+          <Pages itemsPerPage={numberOfTodosPerPage} totalItems={todos.length} paginate={paginate}  />
+        </React.Fragment> : <div>Loading</div> }
     </div>
   );
 }
